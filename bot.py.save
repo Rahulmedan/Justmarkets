@@ -1,0 +1,90 @@
+import json
+import os
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+
+# ================== TOKEN ==================
+TOKEN = "ISI_TOKEN_BOT_KAMU_DI_SINI"
+# ==================DATABASE ==================DATAFILE = datajson"
+ifospathexists(DATA_FILE):
+    with open(DATA_FILE, "r") as f:
+        data = json.load(f)
+else:
+    data = {}
+
+def save_data():
+    with open(DATA_FILE, "w") as f:
+        json.dump(data, f)
+
+# ================== START ==================
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = str(update.effective_user.id)
+
+    # simpan user kalau belum ada
+    if user_id not in data:
+        data[user_id] = []
+        save_data()
+
+    text = (
+        "SELAMAT DATANG\n\n"
+        "Program Rebate JustMarkets\n\n"
+        "Silakan pilih menu di bawah ini:"
+    )
+
+    keyboard = [
+        [InlineKeyboardButton("Statistik Referral", callback_data="ref")],
+        [InlineKeyboardButton("Link IB", callback_data="link")],
+        [InlineKeyboardButton("Informasi Broker", callback_data="about")]
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text(
+        text,
+        reply_markup=reply_markup
+    )
+
+# ================== BUTTON ==================
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    user_id = str(query.from_user.id)
+
+    if query.data == "ref":
+        total = len(data.get(user_id, []))
+
+        await query.edit_message_text(
+            f"STATISTIK REFERRAL\n\n"
+            f"Total Member Aktif: {total}\n"
+            f"Status: Aktif\n\n"
+            f"Terima kasih atas kepercayaan Anda."
+        )
+
+    elif query.data == "link":
+        link_ib = f"https://t.me/{context.bot.username}?start={user_id}"
+
+        await query.edit_message_text(
+            f"LINK REFERRAL ANDA\n\n"
+            f"{link_ib}\n\n"
+            f"Bagikan link ini untuk mendapatkan komisi rebate."
+        )
+
+    elif query.data == "about":
+        await query.edit_message_text(
+            "TENTANG JUSTMARKETS\n\n"
+            "JustMarkets adalah broker multi-asset global.\n"
+            "- Spread kompetitif\n"
+            "- Eksekusi cepat\n"
+            "- Dukungan 24/7\n"
+            "- Digunakan jutaan trader dunia"
+        )
+
+# ================== MAIN ==================
+app = ApplicationBuilder().token(TOKEN).build()
+
+app.add_handler(CommandHandler("start", start))
+app.add_handler(CallbackQueryHandler(button))
+
+print("Bot running...")
+app.run_polling()

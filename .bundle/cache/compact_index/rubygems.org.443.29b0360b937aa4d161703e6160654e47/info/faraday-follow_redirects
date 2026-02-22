@@ -1,0 +1,4 @@
+---
+0.1.0 faraday:< 3&>= 2|checksum:da7f3f7b08feb093bba1259b3104f5b70a88e14767947c01f0dc0b7e12242f59,ruby:< 4&>= 2.6
+0.2.0 faraday:< 3&>= 2|checksum:2b5c6212588fd49cad5cf7d6da196f1d8aa8a2ffb3ede71853f845b9fdcb1832,ruby:< 4&>= 2.6
+0.3.0 faraday:< 3&>= 1|checksum:d92d975635e2c7fe525dd494fcd4b9bb7f0a4a0ec0d5f4c15c729530fdb807f9,ruby:< 4&>= 2.6

@@ -1,0 +1,112 @@
+import json
+import os
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = "7719596959:AAF-VWYd-NMFmBwsAYWATVFuFnbexMgJNs8"
+DATA_FILE = "data.json"
+
+# ================= LOAD DATA =================
+if os.path.exists(DATA_FILE):
+    with open(DATA_FILE, "r") as f:
+        data = json.load(f)
+else:
+    data = {}
+
+def save():
+    with open(DATA_FILE, "w") as f:
+        json.dump(data, f)
+
+# ================= START =================
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    user_id = str(user.id)
+    args = context.args
+
+    # Referral system
+    if args:
+        ref_by = args[0]
+        if ref_by != user_id:
+            data.setdefault(ref_by, [])
+            if user_id not in data[ref_by]:
+                data[ref_by].append(user_id)
+                save()
+
+    text = (
+        "REBATЕ JUSTMARKETS OFFICIAL\n\n"
+        f"Halo {user.first_name}\n\n"
+        "Selamat datang di layanan rebate & referral resmi.\n"
+        "Silakan gunakan menu di bawah untuk mengakses informasi akun Anda.\n\n"
+        "Official Partner Service"
+    )
+
+    keyboard = [
+        [
+            InlineKeyboardButton("📊 Statistik Referral", callback_data="ref"),
+            InlineKeyboardButton("🔗 Link IB", callback_data="link")
+        ],
+        [
+            InlineKeyboardButton("📄 Informasi Broker", callback_data="about")
+        ]
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text(
+        text,
+        reply_markup=reply_markup
+    )
+
+# ================= BUTTON =================
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    user_id = str(query.from_user.id)
+
+    if query.data == "ref":
+        total = len(data.get(user_id, []))
+
+        text = (
+            "STATISTIK REFERRAL\n\n"
+            f"Total Member Aktif: {total}\n"
+            "Status: Aktif\n\n"
+            "Terima kasih atas kepercayaan Anda.\n\n"
+            "Rebate JustMarkets Official"
+        )
+
+        await query.edit_message_text(text)
+
+    elif query.data == "link":
+        link_ib = f"https://t.me/{context.bot.username}?start={user_id}"
+
+        text = (
+            "LINK REFERRAL ANDA\n\n"
+            f"{link_ib}\n\n"
+            "Bagikan link ini untuk mendapatkan komisi rebate.\n\n"
+            "Rebate JustMarkets Official"
+        )
+
+        await query.edit_message_text(text)
+
+    elif query.data == "about":
+        text = (
+            "TENTANG JUSTMARKETS\n\n"
+            "JustMarkets adalah broker multi-asset global.\n"
+            "- Spread kompetitif\n"
+            "- Eksekusi cepat\n"
+            "- Dukungan pelanggan 24/7\n"
+            "- Digunakan oleh jutaan trader di berbagai negara\n\n"
+            "Official Partner Service"
+        )
+
+        await query.edit_message_text(text)
+
+# ================= MAIN =================
+app = ApplicationBuilder().token(TOKEN).build()
+
+app.add_handler(CommandHandler("start", start))
+app.add_handler(CallbackQueryHandler(button))
+
+print("Bot running...")
+app.run_polling()

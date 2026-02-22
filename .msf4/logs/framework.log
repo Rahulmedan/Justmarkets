@@ -1,0 +1,42 @@
+[05/21/2025 19:42:26] [e(0)] core: Failed to connect to the database: No database YAML file
+[05/21/2025 19:42:30] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:42:30] [e(0)] core: Dependency for windows/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:42:34] [e(0)] core: Dependency for windows/x64/encrypted_reverse_tcp is not supported
+[05/21/2025 19:42:37] [e(0)] core: Dependency for windows/encrypted_reverse_tcp is not supported
+[05/21/2025 19:42:43] [e(0)] core: Failed to open history file: /data/data/com.termux/files/home/.msf4/history with error: No such file or directory @ rb_sysopen - /data/data/com.termux/files/home/.msf4/history
+[05/21/2025 19:47:40] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:47:40] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:47:41] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:47:41] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:47:43] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:50:31] [e(0)] core: Exploit failed (multi/handler): Interrupt  - Interrupt 
+[05/21/2025 19:51:10] [e(0)] core: Msf::OptionValidateError : One or more options failed to validate: LHOST.
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/core/option_container.rb:258:in 'Msf::OptionContainer#validate'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/core/module/options.rb:21:in 'Msf::Module::Options#validate'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/core/encoded_payload.rb:63:in 'Msf::EncodedPayload#generate'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/core/encoded_payload.rb:24:in 'Msf::EncodedPayload.create'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/base/simple/payload.rb:52:in 'Msf::Simple::Payload.generate_simple'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/base/simple/payload.rb:139:in 'Msf::Simple::Payload#generate_simple'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/core/payload_generator.rb:478:in 'Msf::PayloadGenerator#generate_raw_payload'
+/data/data/com.termux/files/usr/opt/metasploit-framework/lib/msf/core/payload_generator.rb:422:in 'Msf::PayloadGenerator#generate_payload'
+/data/data/com.termux/files/usr/bin/msfvenom:477:in '<main>'
+[05/21/2025 19:51:31] [e(0)] core: Failed to connect to the database: No database YAML file
+[05/21/2025 19:51:34] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:51:34] [e(0)] core: Dependency for windows/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 19:51:40] [e(0)] core: Dependency for windows/x64/encrypted_reverse_tcp is not supported
+[05/21/2025 19:51:43] [e(0)] core: Dependency for windows/encrypted_reverse_tcp is not supported
+[05/21/2025 20:01:57] [e(0)] core: Failed to connect to the database: No database YAML file
+[05/21/2025 20:02:02] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 20:02:02] [e(0)] core: Dependency for windows/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 20:02:06] [e(0)] core: Dependency for windows/x64/encrypted_reverse_tcp is not supported
+[05/21/2025 20:02:09] [e(0)] core: Dependency for windows/encrypted_reverse_tcp is not supported
+[05/21/2025 20:12:56] [e(0)] core: Failed to connect to the database: No database YAML file
+[05/21/2025 20:13:00] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 20:13:01] [e(0)] core: Dependency for windows/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 20:13:05] [e(0)] core: Dependency for windows/x64/encrypted_reverse_tcp is not supported
+[05/21/2025 20:13:09] [e(0)] core: Dependency for windows/encrypted_reverse_tcp is not supported
+[05/21/2025 21:07:23] [e(0)] core: Failed to connect to the database: No database YAML file
+[05/21/2025 21:07:28] [e(0)] core: Dependency for windows/x64/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 21:07:29] [e(0)] core: Dependency for windows/encrypted_shell_reverse_tcp is not supported
+[05/21/2025 21:07:33] [e(0)] core: Dependency for windows/x64/encrypted_reverse_tcp is not supported
+[05/21/2025 21:07:37] [e(0)] core: Dependency for windows/encrypted_reverse_tcp is not supported
